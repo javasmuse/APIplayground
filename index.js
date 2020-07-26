@@ -1,52 +1,50 @@
-
 async function getChars() {
-const res = await fetch('https://www.breakingbadapi.com/api/characters/');
-const data = await res.json();
+    const res = await fetch('https://www.breakingbadapi.com/api/characters/');
+    const data = await res.json();
 
-const chars = data.map(people => {
-    return {
+    const chars = data.map(people => {
+        return {
             peopleName: people.name,
-            peopleNick: people.nickname, 
+            peopleNick: people.nickname,
             peoplePic: people.img
-    };
-});
-console.log(chars);
+        };
+    });
+    console.log(chars);
 
-// chars.forEach(char => {
-    
-// });
+    var actor = chars[0].peopleName;
+    const nameCard = document.getElementById('items-list');
+    nameCard.innerHTML = actor;
 
-const actor = chars[3].peopleName;
-const nickN = chars[3].peopleNick;
-const picPeep = new Image(100, 200);
-picPeep.src = 'chars[3].peoplePic';
-
-
-const nameCard = document.getElementsByClassName('card');
-const nickCard = document.getElementsByClassName('card');
-const pic = document.getElementById('pic');
-
-nameCard.innerHTML = actor; 
-nickCard.innerHTML = nickN; 
-pic.innerHTML = picPeep;
+    var nickN = chars[0].peopleNick;
+    const nickCard = document.getElementById('item-two');
+    nickCard.innerHTML = nickN;
 
 
 }
 
 getChars();
 
+async function getQuote() {
+    const res2 = await fetch('https://www.breakingbadapi.com/api/quote/random');
+    const data2 = await res2.json();
+
+    const quos = data2.map(quotes => {
+        return {
+            quote: quotes.quote,
+            quoteAuth: quotes.author
+        };
+    });
+    console.log(quos);
 
 
-// fetch('https://www.breakingbadapi.com/api/characters/').then((response) => {
-//     return response.json();
-// }).then((data) => {
-//     console.log(data);
+    const quoteR = quos[0].quote;
+    const quoteHere = document.getElementById('quote');
+    quoteHere.innerHTML = quoteR;
 
-//     const chars = data.data.map( dat => {
+    const quoteA = quos[0].quoteAuth;
+    const quoteAhere = document.getElementById('quoteA');
+    quoteAhere.innerHTML = quoteA;
 
-//     })
-    
+}
 
-// }).catch((err) => {
-//     console.warn(error);
-// });
+getQuote();
