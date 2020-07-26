@@ -12,7 +12,7 @@ body {
 
 #background {
     height: 100vh;
-    background: url(./images/bg.jpg) no-repeat center center/cover;
+    background: url(./images/OITNBbackground.jpg) no-repeat center center/cover;
     position: relative;
     z-index: 2;
 }
@@ -32,18 +32,113 @@ body {
     text-align: center;
     padding: 10px 15px;
     border: 0;
-    ;
     margin: 10px 0;
 }
 
 .header {
     height: 200px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
 }
 
+h4 {
+    font-family: "Roboto",
+    sans-serif;
+    color: #f95f18;
+}
+
 #logo {
     align-self: center;
+}
+
+.quote {
+    height: 100px;
+}
+
+.search {
+    height: 100px
+}
+
+input[type='text'] {
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.card {
+    cursor: pointer;
+    background-color: transparent;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.card h1 {
+    font-size: 25px;
+    border-bottom: 1px #fff solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transistion: transform 08s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    transform: rotateY(180deg);
+}
+
+.card li {
+    list-style: none;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
